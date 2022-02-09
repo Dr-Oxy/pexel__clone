@@ -1,0 +1,19 @@
+.hero__section {
+  height: 55vh;
+  max-width: 700px;
+}
+
+.hero__suggestion {
+  font-size: 14px;
+}
+
+.word__list {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.word__list li:not(:last-child) {
+  margin-right: 5px;
+}
