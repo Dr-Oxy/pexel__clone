@@ -9,7 +9,7 @@ const Gallery = () => {
 
   const apiKey = '563492ad6f91700001000001f47da55ffcf845c5b3fbbbde31823888';
 
-  const baseURL = 'https://api.pexels.com/v1/curated?per_page=12';
+  const baseURL = 'https://api.pexels.com/v1/curated?per_page=72';
 
   // Api calls
   useEffect(() => {

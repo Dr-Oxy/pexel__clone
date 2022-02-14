@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import './masonry.css';
 
-import { useEffect, useState } from 'react';
+import PhotoContainer from '../photo/PhotoContainer';
 
 const Masonry = ({ photos }) => {
   const [columns, setColumns] = useState(3);
@@ -48,9 +49,7 @@ const Masonry = ({ photos }) => {
       {photoColumns.map((photoColumn, index) => (
         <div className="photo__column" key={index}>
           {photoColumn.map((photo) => (
-            <div className="photo__container" key={photo.id}>
-              <img className="photo" src={photo.src.large} alt={photo.alt} />
-            </div>
+            <PhotoContainer photo={photo} key={photo.id} />
           ))}
         </div>
       ))}

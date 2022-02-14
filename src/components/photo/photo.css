@@ -1,0 +1,23 @@
+@media screen and (min-width: 700px) and (max-width: 849px) {
+  .bottom__detail .photographer {
+    opacity: 0;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+  }
+
+  .photo__container:hover .bottom__detail .photographer {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .bottom__detail {
+    opacity: 0;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+  }
+
+  .photo__container:hover .bottom__detail {
+    opacity: 1;
+  }
+}
