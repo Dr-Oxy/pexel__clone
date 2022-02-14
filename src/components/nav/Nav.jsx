@@ -1,0 +1,102 @@
+import React, { useState } from 'react';
+import './nav.css';
+import Search from '../search/Search';
+
+const Nav = () => {
+  const [sticky, setSticky] = useState(false);
+
+  const changeNavLook = () => {
+    if (window.scrollY >= 120) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  };
+
+  window.addEventListener('scroll', changeNavLook);
+
+  return (
+    <nav
+      className={`flex items-center gap-4 py-2 px-3 fixed top-0 left-0 z-20 w-full ${
+        sticky ? 'bg-gray-800' : ''
+      }`}
+    >
+      <div className="logo flex items-center justify-center">
+        <svg
+          className="rounded-md"
+          xmlns="http://www.w3.org/2000/svg"
+          width="40px"
+          height="40px"
+          viewBox="0 0 32 32"
+        >
+          <path
+            d="M2 0h28a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"
+            fill="#05A081"
+          ></path>
+          <path
+            d="M13 21h3.863v-3.752h1.167a3.124 3.124 0 1 0 0-6.248H13v10zm5.863 2H11V9h7.03a5.124 5.124 0 0 1 .833 10.18V23z"
+            fill="#fff"
+          ></path>
+        </svg>
+        <span className="hidden md:inline md:ml-3 text-white font-semibold">
+          Pexels
+        </span>
+      </div>
+
+      <div
+        className={`search-wrap w-full flex-1
+          ${sticky ? 'opacity-1' : 'opacity-0'}
+        `}
+      >
+        <Search />
+      </div>
+
+      <ul className="nav__links capitalize flex items-center font-semibold text-sm ml-auto md:space-x-5 ">
+        <li className="hidden lg:block">
+          <a href="#explore">explore</a>
+        </li>
+        <li className="hidden lg:block">
+          <a href="#license">license</a>
+        </li>
+        <li className="hidden lg:block">
+          <a href="#upload">upload</a>
+        </li>
+        <li className="hidden md:block">
+          <a href="#profile">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="#fff"
+            >
+              <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+            </svg>
+          </a>
+        </li>
+
+        <li className="hidden md:block ">
+          <button className="cta__btn  capitalize font-semibold rounded-md text-white">
+            join
+          </button>
+        </li>
+
+        <li className="md:hidden">
+          <button className=" flex flex-col items-center justify-center border-0 outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="#fff"
+            >
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Nav;

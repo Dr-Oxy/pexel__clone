@@ -1,17 +1,7 @@
-.nav__search input {
-  width: 80%;
-}
-
-.nav__links li:not(:last-child) {
-  margin-left: 2rem;
-}
-
-.nav__links .cta__btn {
-  background-color: #05a081;
-  padding: 0.4rem 1.3rem;
-  transition: color 0.3s ease;
-}
-
-.nav__links .cta__btn:hover {
-  background-color: #05836a;
+header {
+  background-color: rgba(0, 0, 0, 0.315);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
 }

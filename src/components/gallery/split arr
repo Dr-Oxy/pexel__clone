@@ -1,0 +1,23 @@
+const results = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const photos = {
+  column_1: [],
+  column_2: [],
+  column_3: [],
+};
+
+for (let [index, item] of results.entries()) {
+  if (index === 0 && index % 3 === 0) {
+    photos.column_1.push(item);
+  }
+
+  if (index % 2 === 1) {
+    photos.column_2.push(item);
+  }
+
+  if (index % 2 === 0) {
+    photos.column_3.push(item);
+  }
+}
+
+console.log(photos);

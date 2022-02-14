@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import './gallery.css';
+import Masonry from '../masonry/Masonry';
 
 const Gallery = () => {
+  const [photos, setPhotos] = useState([]);
+
+  const apiKey = '563492ad6f91700001000001f47da55ffcf845c5b3fbbbde31823888';
+
+  const baseURL = 'https://api.pexels.com/v1/curated?per_page=12';
+
+  // Api calls
+  useEffect(() => {
+    getPhotos();
+  }, []);
+
+  const getPhotos = async () => {
+    try {
+      const res = await axios.get(baseURL, {
+        headers: {
+          Authorization: apiKey,
+          Accept: 'application/json',
+        },
+      });
+
+      // console.log('res:', res, 'res.status:', res.status, 'data:', res.data);
+
+      const data = await res.data;
+
+      setPhotos(data.photos);
+    } catch (err) {
+      return console.log(err);
+    }
+  };
+
+  console.log(photos);
+
   return (
     <main className="gallery">
       <nav className="gallery__nav flex items-center justify-between md:justify-center whitespace-nowrap overflow-x-auto shadow-sm">
@@ -45,17 +80,8 @@ const Gallery = () => {
           </div>
         </div>
 
-        <section className=" gallery__grid bg-red-500 ">
-          <div className="gallery__photo bg-green-400  a">a</div>
-          <div className="gallery__photo bg-white b">b</div>
-          <div className="gallery__photo bg-purple-800 c">c</div>
-          <div className="gallery__photo bg-yellow-900 d">d</div>
-          <div className="gallery__photo bg-red-400 e">e</div>
-          <div className="gallery__photo bg-pink-600 f">f</div>
-          <div className="gallery__photo bg-blue-600 c">d</div>
-          <div className="gallery__photo bg-rose-400 a">e</div>
-          <div className="gallery__photo bg-gray-500 d">f</div>
-        </section>
+        <section className=" gallery__grid text-white"></section>
+        <Masonry photos={photos} />
       </section>
     </main>
   );

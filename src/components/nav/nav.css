@@ -1,0 +1,24 @@
+.nav__links a {
+  color: #fff;
+}
+
+.nav__links a:hover {
+  color: rgba(255, 255, 255, 0.787);
+}
+
+.nav__links .cta__btn {
+  background-color: #05a081;
+  padding: 0.4rem 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.nav__links .cta__btn:hover {
+  background-color: #05836a;
+  color: rgba(255, 255, 255, 0.787);
+}
+
+@media screen and (min-width: 1200px) {
+  .search-wrap {
+    max-width: 750px;
+  }
+}
