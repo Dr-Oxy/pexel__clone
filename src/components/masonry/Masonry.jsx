@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
 import './masonry.css';
+
+import { useEffect, useState } from 'react';
 
 import PhotoContainer from '../photo/PhotoContainer';
 

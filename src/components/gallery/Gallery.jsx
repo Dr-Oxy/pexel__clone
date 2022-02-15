@@ -1,41 +1,62 @@
-import React, { useState, useEffect } from 'react';
+import './gallery.css';
+
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useRef, useState } from 'react';
+
+import Masonry from '../masonry/Masonry';
 import axios from 'axios';
 
-import './gallery.css';
-import Masonry from '../masonry/Masonry';
+let pageIndex = 1;
+const apiKey = '563492ad6f91700001000001f47da55ffcf845c5b3fbbbde31823888';
 
 const Gallery = () => {
   const [photos, setPhotos] = useState([]);
 
-  const apiKey = '563492ad6f91700001000001f47da55ffcf845c5b3fbbbde31823888';
+  const targetRef = useRef();
 
-  const baseURL = 'https://api.pexels.com/v1/curated?per_page=72';
+  //Fetch photos
+  const api = axios.create({
+    baseURL: 'https://api.pexels.com/v1/',
+    headers: {
+      Authorization: apiKey,
+      Accept: 'application/json',
+    },
+  });
 
   // Api calls
   useEffect(() => {
-    getPhotos();
+    getPhotos(1);
   }, []);
 
-  const getPhotos = async () => {
+  const getPhotos = async (index) => {
     try {
-      const res = await axios.get(baseURL, {
-        headers: {
-          Authorization: apiKey,
-          Accept: 'application/json',
-        },
-      });
-
-      // console.log('res:', res, 'res.status:', res.status, 'data:', res.data);
-
-      const data = await res.data;
-
-      setPhotos(data.photos);
+      const res = await api.get(`curated?page=${index}&per_page=15`);
+      const data = res.data;
+      //set photo state
+      setPhotos((_photos) => [..._photos, ...data.photos]);
     } catch (err) {
-      return console.log(err);
+      console.log(err);
     }
   };
 
-  console.log(photos);
+  //infinite scroll
+  const loadMorePhotos = async () => getPhotos((pageIndex += 1));
+
+  // ComponentDidMount
+  const options = { rootMargin: '0px', threshold: 0.5 };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && loadMorePhotos(),
+      options,
+    );
+    observer.observe(targetRef.current);
+
+    // ComponentDidUnmount or cleanup function
+    return () => {
+      observer.unobserve(targetRef.current);
+    };
+  }, []);
 
   return (
     <main className="gallery">
@@ -80,8 +101,15 @@ const Gallery = () => {
           </div>
         </div>
 
-        <section className=" gallery__grid text-white"></section>
-        <Masonry photos={photos} />
+        <section className="photo__gallery text-white">
+          <Masonry photos={photos} />
+
+          <div ref={targetRef} className="load__btn text-center">
+            <button className="mt-5 bg-gray-200 text-gray-600 py-2 px-3 ">
+              Load More
+            </button>
+          </div>
+        </section>
       </section>
     </main>
   );

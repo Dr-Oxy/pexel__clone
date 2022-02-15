@@ -6,15 +6,17 @@ const PhotoContainer = ({ photo }) => {
 
   return (
     <div className="photo__container relative">
-      <img className="photo" src={photo.src.large} alt={photo.alt} />
+      <img className="photo" src={photo.src.medium} alt={photo.alt} />
 
       <div
         className="bottom__detail absolute bottom-0 w-full
        bg-black/2  py-4 px-3 flex md:justify-between items-center"
       >
         <div className="photographer hidden  text-white md:flex items-center">
-          <div className="avatar bg-white w-6 h-6 rounded-full mr-2"></div>
-          <p className="text-xs">Alexander MacQueen</p>
+          <div className="avatar bg-white w-6 h-6 rounded-full mr-2">
+            <img src={photo.photographer_id} alt="" />
+          </div>
+          <p className="text-xs">{photo.photographer}</p>
         </div>
 
         <div className="options flex ml-auto md:ml-0">
@@ -27,7 +29,7 @@ const PhotoContainer = ({ photo }) => {
             x="0px"
             y="0px"
             viewBox="0 0 100 100"
-            style={{ EnableBackground: 'new 0 0 100 100;' }}
+            style={{ EnableBackground: 'new 0 0 100 100' }}
           >
             <g>
               <path d="M72.2,43.2L58,57.4V17c0-2.2-1.8-4-4-4s-4,1.8-4,4v40.4L35.8,43.2c-1.6-1.6-4.1-1.6-5.7,0c-1.6,1.6-1.6,4.1,0,5.7l21,21   C52,70.7,53,71,54,71s2-0.4,2.8-1.2l21-21c1.6-1.6,1.6-4.1,0-5.7C76.3,41.6,73.8,41.6,72.2,43.2z"></path>
