@@ -52,10 +52,12 @@ const Gallery = ({ photos, targetRef }) => {
         <section className="photo__gallery text-white">
           <Masonry photos={photos} />
 
-          <div ref={targetRef} className="load__btn text-center">
-            <button className="mt-5 bg-gray-200 text-gray-600 py-2 px-3 ">
-              Load More
-            </button>
+          <div ref={targetRef} className="load__btn text-center animate-spin">
+            <img
+              className="h-20 mx-auto"
+              src="/spinner-icon.jpg"
+              alt="loading spinner"
+            />
           </div>
         </section>
       </section>
