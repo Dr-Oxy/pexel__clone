@@ -24,28 +24,28 @@ const Gallery = ({ photos, targetRef }) => {
             Free stock photos
           </h6>
 
-          <div className="title__select flex items-center justify-between cursor-pointer">
-            <span className=" mr-3 font-semibold">Trending</span>
+          <div className="title__text__drop">
+            <div className="title__select flex items-center justify-between cursor-pointer">
+              <span className=" mr-3 font-semibold">Trending</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path d="M7 10l5 5 5-5z"></path>
+              </svg>
+            </div>
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M7 10l5 5 5-5z"></path>
-            </svg>
-          </div>
-        </div>
-
-        <div className="gallery__title__dropdown absolute right-8 left-auto w-40 z-10 border-r-2">
-          <div className="dropdown__pointer absolute left-auto  bg-white -z-10 h-3.5 w-3.5 rotate-45 "></div>
-
-          <div className="dropdown__menu bg-white text-black py-2 ">
-            <a className="active__menu" href="#trending">
-              Trending
-            </a>
-            <a href="#new">New</a>
+            <div className="gallery__title__dropdown absolute right-0 left-auto top-10  w-36 z-10 border-r-2 bg-white">
+              <div className="dropdown__pointer absolute right-10 left-auto -top-2  bg-white -z-10 h-3.5 w-3.5 rotate-45 "></div>
+              <div className="dropdown__menu  text-black py-2 ">
+                <a className="active__menu" href="#trending">
+                  Trending
+                </a>
+                <a href="#new">New</a>
+              </div>
+            </div>
           </div>
         </div>
 

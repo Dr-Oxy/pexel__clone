@@ -52,13 +52,8 @@
   opacity: 0;
 }
 
-.title__select:hover + .gallery__title__dropdown {
+.title__text__drop:hover .gallery__title__dropdown {
   opacity: 1;
-}
-
-.dropdown__pointer {
-  right: 31px;
-  top: -4.5px;
 }
 
 .dropdown__menu a {
@@ -72,6 +67,6 @@
 
 .dropdown__menu a:hover,
 .dropdown__menu a.active__menu {
-  background-color: #ccc;
+  background-color: rgb(233, 233, 233);
   font-weight: bold;
 }
