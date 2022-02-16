@@ -1,14 +1,17 @@
 import './gallery.css';
+import { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 
 /* eslint-disable react-hooks/exhaustive-deps */
-// import React, { useEffect, useRef, useState } from 'react';
 
 import Masonry from '../masonry/Masonry';
 
-const Gallery = ({ photos, targetRef }) => {
+const Gallery = () => {
+  const { targetRef } = useContext(AppContext);
+
   return (
     <main className="gallery">
-      <nav className="gallery__nav flex items-center justify-between md:justify-center whitespace-nowrap overflow-x-auto shadow-sm">
+      <nav className="gallery__nav text-lg lg:text-sm flex items-center justify-between md:justify-center whitespace-nowrap overflow-x-auto shadow-sm">
         <a className="gallery__active" href="#gallery">
           Home
         </a>
@@ -20,7 +23,7 @@ const Gallery = ({ photos, targetRef }) => {
 
       <section className="gallery__layout py-4 px-4 md:px-8">
         <div className="gallery__title mb-2 flex justify-between items-center relative">
-          <h6 className="title__text capitalize font-semibold">
+          <h6 className="title__text text-lg capitalize font-semibold">
             Free stock photos
           </h6>
 
@@ -50,12 +53,12 @@ const Gallery = ({ photos, targetRef }) => {
         </div>
 
         <section className="photo__gallery text-white">
-          <Masonry photos={photos} />
+          <Masonry />
 
           <div ref={targetRef} className="load__btn text-center animate-spin">
             <img
               className="h-20 mx-auto"
-              src="/spinner-icon.jpg"
+              src="/spinner.png"
               alt="loading spinner"
             />
           </div>

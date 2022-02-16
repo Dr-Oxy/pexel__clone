@@ -2,7 +2,7 @@ import React from 'react';
 
 const Search = ({ placeholder, onSearch, onChange, searchText }) => {
   return (
-    <div className="nav__search bg-white rounded-md flex w-full">
+    <div className="bg-white rounded-md flex w-full">
       <input
         className="placeholder:text-gray-700 placeholder:text-sm border-0 outline-none bg-transparent flex-1 py-2 px-3 w-full"
         type="text"

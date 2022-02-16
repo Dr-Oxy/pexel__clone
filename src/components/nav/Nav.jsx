@@ -25,8 +25,8 @@ const Nav = () => {
         <svg
           className="rounded-md"
           xmlns="http://www.w3.org/2000/svg"
-          width="40px"
-          height="40px"
+          width="44px"
+          height="44px"
           viewBox="0 0 32 32"
         >
           <path
@@ -85,8 +85,8 @@ const Nav = () => {
           <button className=" flex flex-col items-center justify-center border-0 outline-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="32"
+              height="32"
               viewBox="0 0 24 24"
               fill="#fff"
             >

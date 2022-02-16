@@ -5,13 +5,17 @@ import Search from '../search/Search';
 const Hero = () => {
   return (
     <section className="hero__section flex flex-col justify-center mx-5 md:mx-auto text-white">
-      <h1 className="font-bold text-3xl mb-4 ">
+      <h1 className="font-bold text-4xl lg:text-3xl mb-4 ">
         The best free stock photos, royalty free images & videos shared by
         creators.
       </h1>
 
       <form className="bg-black-100 w-full">
-        <Search placeholder="Search for free photos and videos" />
+        <div className="relative bg-red-500">
+          <Search placeholder="Search for free photos and videos" />
+
+          {/* <div className="search__dropdown h-60 bg-gray-500 "></div> */}
+        </div>
       </form>
 
       <div className="hero__suggestion mt-2">
