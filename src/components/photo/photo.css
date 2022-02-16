@@ -1,3 +1,7 @@
+.options svg {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 700px) and (max-width: 849px) {
   .bottom__detail .photographer {
     opacity: 0;
