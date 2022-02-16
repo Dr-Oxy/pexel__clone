@@ -1,63 +1,11 @@
 import './gallery.css';
 
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef, useState } from 'react';
+// import React, { useEffect, useRef, useState } from 'react';
 
 import Masonry from '../masonry/Masonry';
-import axios from 'axios';
 
-let pageIndex = 1;
-const apiKey = '563492ad6f91700001000001f47da55ffcf845c5b3fbbbde31823888';
-
-const Gallery = () => {
-  const [photos, setPhotos] = useState([]);
-
-  const targetRef = useRef();
-
-  //Fetch photos
-  const api = axios.create({
-    baseURL: 'https://api.pexels.com/v1/',
-    headers: {
-      Authorization: apiKey,
-      Accept: 'application/json',
-    },
-  });
-
-  // Api calls
-  useEffect(() => {
-    getPhotos(1);
-  }, []);
-
-  const getPhotos = async (index) => {
-    try {
-      const res = await api.get(`curated?page=${index}&per_page=15`);
-      const data = res.data;
-      //set photo state
-      setPhotos((_photos) => [..._photos, ...data.photos]);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  //infinite scroll
-  const loadMorePhotos = async () => getPhotos((pageIndex += 1));
-
-  // ComponentDidMount
-  const options = { rootMargin: '0px', threshold: 0.5 };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && loadMorePhotos(),
-      options,
-    );
-    observer.observe(targetRef.current);
-
-    // ComponentDidUnmount or cleanup function
-    return () => {
-      observer.unobserve(targetRef.current);
-    };
-  }, []);
-
+const Gallery = ({ photos, targetRef }) => {
   return (
     <main className="gallery">
       <nav className="gallery__nav flex items-center justify-between md:justify-center whitespace-nowrap overflow-x-auto shadow-sm">

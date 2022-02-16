@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Search = ({ placeholder, onSearch, onChange }) => {
+const Search = ({ placeholder, onSearch, onChange, searchText }) => {
   return (
     <div className="nav__search bg-white rounded-md flex w-full">
       <input
@@ -9,6 +9,7 @@ const Search = ({ placeholder, onSearch, onChange }) => {
         name="search"
         id="search"
         placeholder={placeholder ?? 'Search for free photos'}
+        value={searchText}
         onChange={onChange}
       />
 

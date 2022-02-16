@@ -5,7 +5,7 @@ const PhotoContainer = ({ photo }) => {
   const photoBg = photo.avg_colour;
 
   return (
-    <div className="photo__container relative">
+    <div className="photo__container relative animate-fadeIn ">
       <img className="photo" src={photo.src.medium} alt={photo.alt} />
 
       <div

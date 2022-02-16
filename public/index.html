@@ -26,6 +26,23 @@
     -->
     <title>Free Stock photos, Readily availiable videos</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: 0 },
+                '100%': { opacity: 1 },
+              },
+            },
+            animation: {
+              fadeIn: 'fadeIn 3s',
+            },
+          },
+        },
+      };
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
