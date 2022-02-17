@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-const Search = ({ placeholder, onSearch, onChange, searchText }) => {
+import { AppContext } from '../../context/AppContext';
+
+const Search = ({ placeholder }) => {
+  const { onChange, searchText, onSearch } = useContext(AppContext);
+
+  console.log(searchText);
+
   return (
     <div className="bg-white rounded-md flex w-full">
       <input
-        className="placeholder:text-gray-700 placeholder:text-sm border-0 outline-none bg-transparent flex-1 py-2 px-3 w-full"
+        className="text-gray-700 placeholder:text-gray-700 placeholder:text-sm border-0 outline-none bg-transparent flex-1 py-2 px-3 w-full"
         type="text"
         name="search"
         id="search"
@@ -18,7 +24,6 @@ const Search = ({ placeholder, onSearch, onChange, searchText }) => {
         onClick={onSearch}
       >
         <svg
-          className=""
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"

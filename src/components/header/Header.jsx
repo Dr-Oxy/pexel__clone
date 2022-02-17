@@ -6,7 +6,7 @@ import './header.css';
 const Header = () => {
   return (
     <header
-      style={{ backgroundImage: "url('/pexels-header.jpg')" }}
+      style={{ backgroundImage: "url('/pexels-bg.jpeg')" }}
       className="header"
     >
       <Hero />

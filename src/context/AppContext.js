@@ -98,9 +98,16 @@ export const AppProvider = (props) => {
     };
   }, []);
 
+  //>>>>> Search functionality <<<<<<
+  const onChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const onSearch = () => {};
+
   return (
     <AppContext.Provider
-      value={{ photos, targetRef, searchText, photoColumns }}
+      value={{ photos, targetRef, searchText, photoColumns, onChange }}
     >
       {props.children}
     </AppContext.Provider>

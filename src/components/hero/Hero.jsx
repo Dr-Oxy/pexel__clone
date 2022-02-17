@@ -11,7 +11,7 @@ const Hero = () => {
       </h1>
 
       <form className="bg-black-100 w-full">
-        <div className="relative bg-red-500">
+        <div className="">
           <Search placeholder="Search for free photos and videos" />
 
           {/* <div className="search__dropdown h-60 bg-gray-500 "></div> */}
