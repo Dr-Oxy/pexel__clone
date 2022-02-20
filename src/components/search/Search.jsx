@@ -1,26 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { AppContext } from '../../context/AppContext';
-
-const Search = ({ placeholder }) => {
-  const { onChange, searchText, onSearch } = useContext(AppContext);
-
-  console.log(searchText);
-
+const Search = ({ placeholder, value, onChange, onSearch }) => {
   return (
-    <div className="bg-white rounded-md flex w-full">
+    <div className="flex w-full bg-white rounded-md">
       <input
-        className="text-gray-700 placeholder:text-gray-700 placeholder:text-sm border-0 outline-none bg-transparent flex-1 py-2 px-3 w-full"
+        className="flex-1 w-full px-3 py-2 text-gray-700 bg-transparent border-0 outline-none placeholder:text-gray-700 placeholder:text-sm"
         type="text"
-        name="search"
-        id="search"
-        placeholder={placeholder ?? 'Search for free photos'}
-        value={searchText}
         onChange={onChange}
+        placeholder={placeholder ?? 'Search for free photos'}
+        value={value}
       />
 
       <button
-        className="flex flex-col items-center justify-center px-4 flex-shrink-0"
+        className="flex flex-col items-center justify-center flex-shrink-0 px-4"
         onClick={onSearch}
       >
         <svg

@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
 import './nav.css';
+
+import React, { useContext, useState } from 'react';
+
+import { AppContext } from '../../context/AppContext';
 import Search from '../search/Search';
 
 const Nav = () => {
   const [sticky, setSticky] = useState(false);
+  const { onChanged, navText, onNavSearch } = useContext(AppContext);
 
   const changeNavLook = () => {
     if (window.scrollY >= 120) {
@@ -48,7 +52,7 @@ const Nav = () => {
           ${sticky ? 'opacity-1' : 'opacity-0'}
         `}
       >
-        <Search />
+        <Search value={navText} onChange={onChanged} onSearch={onNavSearch} />
       </div>
 
       <ul className="nav__links capitalize flex items-center font-semibold text-sm ml-auto md:space-x-5 ">

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useRef, createContext } from 'react';
+import React, { createContext, useEffect, useRef, useState } from 'react';
+
 import axios from 'axios';
 
 export const AppContext = createContext();
@@ -12,7 +13,11 @@ export const AppProvider = (props) => {
 
   const [columns, setColumns] = useState(3);
 
-  const [searchText, setSearchText] = useState('');
+  const [heroText, setHeroText] = useState('');
+
+  const [navText, setNavText] = useState('');
+
+  const [searchResult, setSearchResult] = useState([]);
 
   const targetRef = useRef();
 
@@ -99,15 +104,51 @@ export const AppProvider = (props) => {
   }, []);
 
   //>>>>> Search functionality <<<<<<
-  const onChange = (e) => {
-    setSearchText(e.target.value);
+  const onChangeHandler = (e) => {
+    setHeroText(e.target.value);
   };
 
-  const onSearch = () => {};
+  const onChanged = (e) => {
+    setNavText(e.target.value);
+  };
+
+  const onHeroSearch = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await api.get(`/search?query=${heroText}`);
+      setSearchResult(res.photos);
+      console.log('search', res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const onNavSearch = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await api.get(`/search?query=${navText}`);
+      setSearchResult(response.photos);
+      console.log('search', response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <AppContext.Provider
-      value={{ photos, targetRef, searchText, photoColumns, onChange }}
+      value={{
+        photos,
+        targetRef,
+        heroText,
+        navText,
+        photoColumns,
+        onChangeHandler,
+        onChanged,
+        onHeroSearch,
+        onNavSearch,
+        searchResult,
+      }}
     >
       {props.children}
     </AppContext.Provider>
