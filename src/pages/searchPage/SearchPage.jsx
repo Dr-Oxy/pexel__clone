@@ -11,8 +11,12 @@ const SearchPage = () => {
   let { value } = useParams();
 
   useEffect(() => {
-    setSticky(true);
+    // updateNavLook();
   });
+
+  const updateNavLook = () => {
+    setSticky(true);
+  };
 
   return (
     <div className="search">

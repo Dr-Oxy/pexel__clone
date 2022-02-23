@@ -118,25 +118,29 @@ export const AppProvider = (props) => {
 
   const onHeroSearch = async () => {
     try {
-      const res = await api.get(`/search?query=${heroText}`);
+      const res = await api.get(`/search?query=${heroText}&per_page=54`);
       const data = res.data;
-      setSearchResults((_searchResults) => [..._searchResults, ...data.photos]);
-      setHeroText('');
+      // setSearchResults((_searchResults) => [..._searchResults, ...data.photos]);
+      setSearchResults(data.photos);
     } catch (err) {
       console.log(err);
     }
+
+    setHeroText('');
   };
 
   const onNavSearch = async () => {
     try {
-      const res = await api.get(`/search?query=${navText}`);
+      const res = await api.get(`/search?query=${navText}&per_page=54`);
       const data = res.data;
 
-      setSearchResults((_searchResults) => [..._searchResults, ...data.photos]);
-      setNavText('');
+      // setSearchResults((_searchResults) => [..._searchResults, ...data.photos]);
+      setSearchResults(data.photos);
     } catch (err) {
       console.log(err);
     }
+
+    setNavText('');
   };
 
   return (
