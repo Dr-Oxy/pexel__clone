@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { useParams } from 'react-router-dom';
 
@@ -6,17 +6,17 @@ import Nav from '../../components/nav/Nav';
 import SearchMasonry from '../../components/searchMasonry/SearchMasonry';
 
 const SearchPage = () => {
-  const { targetRef, setSticky } = useContext(AppContext);
+  const { targetRef } = useContext(AppContext);
 
   let { value } = useParams();
 
-  useEffect(() => {
-    // updateNavLook();
-  });
+  // useEffect(() => {
+  //   // updateNavLook();
+  // });
 
-  const updateNavLook = () => {
-    setSticky(true);
-  };
+  // const updateNavLook = () => {
+  //   setSticky(true);
+  // };
 
   return (
     <div className="search">
