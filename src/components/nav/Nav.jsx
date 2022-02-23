@@ -1,13 +1,16 @@
 import './nav.css';
 
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { AppContext } from '../../context/AppContext';
 import Search from '../search/Search';
 
 const Nav = () => {
-  const [sticky, setSticky] = useState(false);
-  const { onChanged, navText, onNavSearch } = useContext(AppContext);
+  const { onChanged, navText, onNavSearch, sticky, setSticky } =
+    useContext(AppContext);
+
+  const navigate = useNavigate();
 
   const changeNavLook = () => {
     if (window.scrollY >= 120) {
@@ -25,34 +28,43 @@ const Nav = () => {
         sticky ? 'bg-gray-800' : ''
       }`}
     >
-      <div className="logo flex items-center justify-center">
-        <svg
-          className="rounded-md"
-          xmlns="http://www.w3.org/2000/svg"
-          width="44px"
-          height="44px"
-          viewBox="0 0 32 32"
-        >
-          <path
-            d="M2 0h28a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"
-            fill="#05A081"
-          ></path>
-          <path
-            d="M13 21h3.863v-3.752h1.167a3.124 3.124 0 1 0 0-6.248H13v10zm5.863 2H11V9h7.03a5.124 5.124 0 0 1 .833 10.18V23z"
-            fill="#fff"
-          ></path>
-        </svg>
-        <span className="hidden md:inline md:ml-3 text-white font-semibold">
-          Pexels
-        </span>
-      </div>
+      <Link to="/">
+        <div className="logo flex items-center justify-center">
+          <svg
+            className="rounded-md"
+            xmlns="http://www.w3.org/2000/svg"
+            width="44px"
+            height="44px"
+            viewBox="0 0 32 32"
+          >
+            <path
+              d="M2 0h28a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"
+              fill="#05A081"
+            ></path>
+            <path
+              d="M13 21h3.863v-3.752h1.167a3.124 3.124 0 1 0 0-6.248H13v10zm5.863 2H11V9h7.03a5.124 5.124 0 0 1 .833 10.18V23z"
+              fill="#fff"
+            ></path>
+          </svg>
+          <span className="hidden md:inline md:ml-3 text-white font-semibold">
+            Pexels
+          </span>
+        </div>
+      </Link>
 
       <div
         className={`search-wrap w-full flex-1
           ${sticky ? 'opacity-1' : 'opacity-0'}
         `}
       >
-        <Search value={navText} onChange={onChanged} onSearch={onNavSearch} />
+        <Search
+          value={navText}
+          onChange={onChanged}
+          onSearch={() => {
+            onNavSearch();
+            navigate(`/search/${navText}`);
+          }}
+        />
       </div>
 
       <ul className="nav__links capitalize flex items-center font-semibold text-sm ml-auto md:space-x-5 ">

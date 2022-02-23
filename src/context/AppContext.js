@@ -17,7 +17,9 @@ export const AppProvider = (props) => {
 
   const [navText, setNavText] = useState('');
 
-  const [searchResult, setSearchResult] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+
+  const [sticky, setSticky] = useState(false);
 
   const targetRef = useRef();
 
@@ -84,6 +86,8 @@ export const AppProvider = (props) => {
 
   const photoColumns = chunkArrayInColumn(photos, columns);
 
+  const searchColumns = chunkArrayInColumn(searchResults, columns);
+
   //>>>>> infinite scroll <<<<<<
   const loadMorePhotos = async () => getPhotos((pageIndex += 1));
 
@@ -112,24 +116,24 @@ export const AppProvider = (props) => {
     setNavText(e.target.value);
   };
 
-  const onHeroSearch = async (e) => {
-    e.preventDefault();
-
+  const onHeroSearch = async () => {
     try {
       const res = await api.get(`/search?query=${heroText}`);
-      setSearchResult(res.photos);
-      console.log('search', res);
+      const data = res.data;
+      setSearchResults((_searchResults) => [..._searchResults, ...data.photos]);
+      setHeroText('');
     } catch (err) {
       console.log(err);
     }
   };
 
-  const onNavSearch = async (e) => {
-    e.preventDefault();
+  const onNavSearch = async () => {
     try {
-      const response = await api.get(`/search?query=${navText}`);
-      setSearchResult(response.photos);
-      console.log('search', response);
+      const res = await api.get(`/search?query=${navText}`);
+      const data = res.data;
+
+      setSearchResults((_searchResults) => [..._searchResults, ...data.photos]);
+      setNavText('');
     } catch (err) {
       console.log(err);
     }
@@ -147,7 +151,10 @@ export const AppProvider = (props) => {
         onChanged,
         onHeroSearch,
         onNavSearch,
-        searchResult,
+        searchResults,
+        searchColumns,
+        sticky,
+        setSticky,
       }}
     >
       {props.children}

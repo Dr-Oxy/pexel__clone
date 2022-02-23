@@ -1,15 +1,16 @@
-import './masonry.css';
+import React, { useContext } from 'react';
 
-import { useContext } from 'react';
-
-import PhotoContainer from '../photo/PhotoContainer';
 import { AppContext } from '../../context/AppContext';
 
-const Masonry = () => {
-  const { photoColumns } = useContext(AppContext);
+import '../masonry/masonry.css';
+import PhotoContainer from '../photo/PhotoContainer';
+
+const SearchMasonry = () => {
+  const { searchColumns } = useContext(AppContext);
+
   return (
     <div className="masonry">
-      {photoColumns.map((photoColumn, id) => (
+      {searchColumns.map((photoColumn, id) => (
         <div className="photo__column" key={id}>
           {photoColumn.map((photo) => (
             <PhotoContainer photo={photo} key={photo.id} />
@@ -20,4 +21,4 @@ const Masonry = () => {
   );
 };
 
-export default Masonry;
+export default SearchMasonry;

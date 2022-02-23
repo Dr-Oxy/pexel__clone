@@ -7,9 +7,10 @@ const Layout = () => {
   return (
     <BrowserRouter>
       <div className="layout">
+        {/* <Nav /> */}
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/search" element={<SearchPage />} />
+          <Route exact path="/search/:value" element={<SearchPage />} />
         </Routes>
       </div>
     </BrowserRouter>

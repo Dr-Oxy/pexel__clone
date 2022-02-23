@@ -57,7 +57,7 @@ const Gallery = () => {
 
           <div ref={targetRef} className="load__btn text-center animate-spin">
             <img
-              className="h-20 mx-auto"
+              className="h-20 mx-auto opacity-40 mt-3"
               src="/spinner.png"
               alt="loading spinner"
             />
