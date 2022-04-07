@@ -10,20 +10,12 @@ const SearchPage = () => {
 
   let { value } = useParams();
 
-  // useEffect(() => {
-  //   // updateNavLook();
-  // });
-
-  // const updateNavLook = () => {
-  //   setSticky(true);
-  // };
-
   return (
     <div className="search">
-      <Nav />
+      <Nav className="flex items-center gap-4 py-2 px-3 fixed top-0 left-0 z-20 w-full bg-gray-800" />
 
       <main className="search__layout py-4 px-4 md:px-8 mt-12">
-        <h1 className="capitalize font-bold text-2xl text-black text-center mb-7">
+        <h1 className="capitalize font-bold text-2xl text-black  my-7">
           {value} Photos
         </h1>
 

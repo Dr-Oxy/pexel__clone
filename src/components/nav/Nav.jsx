@@ -6,28 +6,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import Search from '../search/Search';
 
-const Nav = () => {
-  const { onChanged, navText, onNavSearch, sticky, setSticky } =
-    useContext(AppContext);
+const Nav = ({ className, opacity }) => {
+  const { onChanged, navText, onNavSearch } = useContext(AppContext);
 
   const navigate = useNavigate();
 
-  const changeNavLook = () => {
-    if (window.scrollY >= 120) {
-      setSticky(true);
-    } else {
-      setSticky(false);
-    }
-  };
-
-  window.addEventListener('scroll', changeNavLook);
-
   return (
-    <nav
-      className={`flex items-center gap-4 py-2 px-3 fixed top-0 left-0 z-20 w-full ${
-        sticky ? 'bg-gray-800' : ''
-      }`}
-    >
+    <nav className={className}>
       <Link to="/">
         <div className="logo flex items-center justify-center">
           <svg
@@ -54,7 +39,7 @@ const Nav = () => {
 
       <div
         className={`search-wrap w-full flex-1
-          ${sticky ? 'opacity-1' : 'opacity-0'}
+          ${opacity}
         `}
       >
         <Search

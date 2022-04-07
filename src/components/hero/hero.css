@@ -1,7 +1,7 @@
 .hero__section {
-  height: 100vh;
-  max-height: 550px;
-  min-height: 400px;
+  height: 70vh;
+  max-height: 700px;
+  min-height: 550px;
 
   max-width: 700px;
 }
@@ -28,3 +28,9 @@
 .word__list a:hover {
   color: #fff;
 }
+
+/* @media screen and (max-width: 500px) {
+  .hero__section {
+    height: 100vh;
+  }
+} */
