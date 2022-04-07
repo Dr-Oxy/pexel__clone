@@ -21,6 +21,7 @@ const Hero = () => {
       <form className="w-full bg-black-100">
         <div className="">
           <Search
+            inputBg="bg-white"
             value={heroText}
             onChange={onChangeHandler}
             onSearch={() => {

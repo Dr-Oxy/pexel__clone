@@ -26,6 +26,10 @@ const HomePage = () => {
           sticky ? 'bg-gray-800' : ''
         }`}
         opacity={`${sticky ? 'opacity-1' : 'opacity-0'}`}
+        text="text-white"
+        hover="hover:text-white/70"
+        inputBg="bg-white"
+        fill="fill-white"
       />
       <Header />
       <Gallery />

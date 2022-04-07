@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import Search from '../search/Search';
 
-const Nav = ({ className, opacity }) => {
+const Nav = ({ className, opacity, text, hover, inputBg, fill }) => {
   const { onChanged, navText, onNavSearch } = useContext(AppContext);
 
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ const Nav = ({ className, opacity }) => {
         `}
       >
         <Search
+          inputBg={inputBg}
           value={navText}
           onChange={onChanged}
           onSearch={() => {
@@ -52,7 +53,9 @@ const Nav = ({ className, opacity }) => {
         />
       </div>
 
-      <ul className="nav__links capitalize flex items-center font-semibold text-sm ml-auto md:space-x-5 ">
+      <ul
+        className={`nav__links capitalize flex items-center font-semibold text-sm ml-auto md:space-x-5 ${text} ${hover}`}
+      >
         <li className="hidden lg:block">
           <a href="#explore">explore</a>
         </li>
@@ -63,13 +66,12 @@ const Nav = ({ className, opacity }) => {
           <a href="#upload">upload</a>
         </li>
         <li className="hidden md:block">
-          <a href="#profile">
+          <a className={fill} href="#profile">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              fill="#fff"
             >
               <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
             </svg>

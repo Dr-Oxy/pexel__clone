@@ -21,7 +21,7 @@ const Gallery = () => {
         <a href="#challenges">Challenges</a>
       </nav>
 
-      <section className="gallery__layout py-4 px-4 md:px-8">
+      <section className="gallery__layout py-4 px-4 md:px-9">
         <div className="gallery__title mb-2 flex justify-between items-center relative">
           <h6 className="title__text text-lg capitalize font-semibold">
             Free stock photos

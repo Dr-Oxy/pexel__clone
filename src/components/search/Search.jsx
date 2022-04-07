@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Search = ({ placeholder, value, onChange, onSearch }) => {
+const Search = ({ placeholder, value, onChange, onSearch, inputBg }) => {
   return (
-    <div className="flex w-full bg-white rounded-md">
+    <div className={`flex w-full ${inputBg} rounded-md`}>
       <input
         className="flex-1 w-full px-3 py-2 text-gray-700 bg-transparent border-0 outline-none placeholder:text-gray-700 placeholder:text-sm"
         type="text"
