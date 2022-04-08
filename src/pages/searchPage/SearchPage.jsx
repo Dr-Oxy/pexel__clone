@@ -13,7 +13,7 @@ const SearchPage = () => {
   return (
     <div className="search">
       <Nav
-        className="flex items-center gap-4 py-2 px-12 fixed top-0 left-0 z-20 w-full bg-white 
+        className="flex items-center gap-4 py-2 px-3 md:px-12 fixed top-0 left-0 z-20 w-full bg-white 
       "
         text="text-black/70"
         hover="hover:text-black/50"

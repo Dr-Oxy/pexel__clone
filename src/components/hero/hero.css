@@ -1,7 +1,6 @@
 .hero__section {
-  height: 70vh;
-  max-height: 700px;
-  min-height: 550px;
+  max-height: 600px;
+  min-height: 500px;
 
   max-width: 700px;
 }
@@ -29,8 +28,9 @@
   color: #fff;
 }
 
-/* @media screen and (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .hero__section {
-    height: 100vh;
+    max-height: 700px;
+    min-height: 550px;
   }
-} */
+}
