@@ -31,7 +31,7 @@ const Nav = ({ className, opacity, text, hover, inputBg, fill }) => {
               fill="#fff"
             ></path>
           </svg>
-          <span className="hidden md:inline md:ml-3 text-white font-semibold">
+          <span className={`hidden md:inline md:ml-3 ${text} font-semibold`}>
             Pexels
           </span>
         </div>
